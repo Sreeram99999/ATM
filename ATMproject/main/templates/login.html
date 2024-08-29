@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+        <button type="submit">Check Balance</button> 
+        <div id="d" style="text-align: center;"><a href="{% url 'forget' %}" id="for">Forget Pin</a></div>
+</form>
+
+{% if balance is not None %}
+    <div style="text-align: center;"><h2>Your balance is ${{ balance }}</h2></div>
+    <div style="display: flex; justify-content: space-around; width: 900px; position: absolute; left: 300px;">
+        <a href="{% url 'with' total %}" class="button-link">Withdraw</a><br>
+        <a href="{% url 'deposite' total %}" class="button-link">Deposit</a> <br>
+        <a href="{% url 'transfer' total %}" class="button-link">Transfer</a> <br>
+        <a href="{% url 'history' total %}" class="button-link">History</a>
+    </div>
+{% endif %}
+{% endblock content %}

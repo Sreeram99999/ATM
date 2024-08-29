@@ -1,0 +1,56 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <form class="otp-Form" method="post">
+        {% csrf_token %}
+        <span class="mainHeading">Enter OTP</span>
+        <p class="otpSubheading">We have sent a verification code to your {{mail}}</p>
+        <div class="inputContainer">
+            <input required="required" maxlength="1" type="text" class="otp-input" id="otp-input1" name="o1">
+            <input required="required" maxlength="1" type="text" class="otp-input" id="otp-input2" name="o2">
+            <input required="required" maxlength="1" type="text" class="otp-input" id="otp-input3" name="o3">
+            <input required="required" maxlength="1" type="text" class="otp-input" id="otp-input4" name="o4">
+            <input required="required" maxlength="1" type="text" class="otp-input" id="otp-input5" name="o5"> 
+            <input required="required" maxlength="1" type="text" class="otp-input" id="otp-input6" name="o6"> 
+        </div>
+        <button class="verifyButton" type="submit">Verify</button>
+        {% if d is not None %}
+            <span class="errorMessage">{{d}}</span>
+        {% endif %}
+        <p class="resendNote">Didn't receive the code? <button class="resendBtn">Resend Code</button></p>
+        <span>enter otp in </span><div id="timer" class="timer">02:00</div> 
+    </form>
+    
+    <script>
+        // Timer JavaScript
+        function startTimer(duration, display) {
+            var timer = duration, minutes, seconds;
+            setInterval(function () {
+                minutes = parseInt(timer / 60, 10);
+                seconds = parseInt(timer % 60, 10);
+
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = minutes + ":" + seconds;
+
+                if (--timer < 0) {
+                    timer = 0;
+                    display.textContent = "00:00";
+                    // Optionally handle timer expiration here (e.g., disable inputs, show message, etc.)
+                }
+            }, 1000);
+        }
+
+        window.onload = function () {
+            var twoMinutes = 60 * 2,
+                display = document.querySelector('#timer');
+            startTimer(twoMinutes, display);
+        };
+
+        function resendCode() {
+            // Handle resend code logic here
+            alert('Resend code functionality goes here.');
+        }
+    </script>
+{% endblock content %}

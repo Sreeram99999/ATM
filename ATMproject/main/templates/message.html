@@ -1,0 +1,10 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <div class="message-container">
+        <h2>{{ title }}</h2>
+        <p>{{ message }}</p>
+        <a href="{% url 'index' %}" class="btn">Return Home</a>
+    </div>
+{% endblock content %}
+

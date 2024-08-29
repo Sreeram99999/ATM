@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block content %}
+   <form action="" method="post">
+        {% csrf_token %}
+        enter new ppin
+        <input type="number" name="new-pin">
+        re-enter new pin
+        <input type="number" name="confirm">
+        <button>submit</button>
+   </form>
+{% endblock content %}

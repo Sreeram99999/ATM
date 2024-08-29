@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <div class="history-container">
+        {% for i in og %}
+            <div class="history-item">
+                <p>Account Number: {{ i.acc_num }}</p>
+                <p>Type: {{ i.type }}</p>
+                <p>Amount: ${{ i.amt }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

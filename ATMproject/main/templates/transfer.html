@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        enter account number
+        <input type="text" name="acc" id="">
+        enter amount
+        <input type="number" name="am" id="">
+        <button>transfer</button>
+    </form>
+{% endblock content %}

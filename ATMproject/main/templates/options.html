@@ -1,0 +1,12 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>enter the amount</p>
+        <input type="number" name="amount" id="">
+        <button type="submit">submit</button>
+    </form>
+
+{% endblock content %}
+
